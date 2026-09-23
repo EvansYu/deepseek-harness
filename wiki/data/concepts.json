@@ -1,0 +1,520 @@
+{
+  "nodes": [
+    {
+      "id": "project:dsh",
+      "type": "project",
+      "page": "wiki/index.md"
+    },
+    {
+      "id": "architecture:composition",
+      "type": "architecture",
+      "page": "wiki/architecture/index.md"
+    },
+    {
+      "id": "architecture:execution",
+      "type": "architecture",
+      "page": "wiki/architecture/execution.md"
+    },
+    {
+      "id": "architecture:data",
+      "type": "architecture",
+      "page": "wiki/architecture/data.md"
+    },
+    {
+      "id": "feature:agent",
+      "type": "feature",
+      "page": "wiki/features/agent.md"
+    },
+    {
+      "id": "feature:execution",
+      "type": "feature",
+      "page": "wiki/features/execution.md"
+    },
+    {
+      "id": "feature:collaboration",
+      "type": "feature",
+      "page": "wiki/features/collaboration.md"
+    },
+    {
+      "id": "feature:interfaces",
+      "type": "feature",
+      "page": "wiki/features/interfaces.md"
+    },
+    {
+      "id": "feature:engineering",
+      "type": "feature",
+      "page": "wiki/features/engineering.md"
+    }
+  ],
+  "edges": [
+    {
+      "to": "architecture:composition",
+      "relation": "explainedBy",
+      "evidence": "docs/architecture.md",
+      "status": "confirmed",
+      "from": "project:dsh"
+    },
+    {
+      "to": "architecture:execution",
+      "relation": "explainedBy",
+      "evidence": "docs/architecture.md",
+      "status": "confirmed",
+      "from": "project:dsh"
+    },
+    {
+      "to": "architecture:data",
+      "relation": "explainedBy",
+      "evidence": "docs/architecture.md",
+      "status": "confirmed",
+      "from": "project:dsh"
+    },
+    {
+      "to": "feature:agent",
+      "relation": "offers",
+      "evidence": "docs/architecture.md",
+      "status": "confirmed",
+      "from": "project:dsh"
+    },
+    {
+      "to": "group:attachment",
+      "relation": "implementedBy",
+      "evidence": "packages/attachment/README.md",
+      "status": "confirmed",
+      "from": "feature:agent"
+    },
+    {
+      "to": "group:compaction",
+      "relation": "implementedBy",
+      "evidence": "packages/compaction/README.md",
+      "status": "confirmed",
+      "from": "feature:agent"
+    },
+    {
+      "to": "group:context",
+      "relation": "implementedBy",
+      "evidence": "packages/context/README.md",
+      "status": "confirmed",
+      "from": "feature:agent"
+    },
+    {
+      "to": "group:core",
+      "relation": "implementedBy",
+      "evidence": "packages/core/README.md",
+      "status": "confirmed",
+      "from": "feature:agent"
+    },
+    {
+      "to": "group:goal",
+      "relation": "implementedBy",
+      "evidence": "packages/goal/README.md",
+      "status": "confirmed",
+      "from": "feature:agent"
+    },
+    {
+      "to": "group:guard",
+      "relation": "implementedBy",
+      "evidence": "packages/guard/README.md",
+      "status": "confirmed",
+      "from": "feature:agent"
+    },
+    {
+      "to": "group:llm",
+      "relation": "implementedBy",
+      "evidence": "packages/llm/README.md",
+      "status": "confirmed",
+      "from": "feature:agent"
+    },
+    {
+      "to": "group:plan",
+      "relation": "implementedBy",
+      "evidence": "packages/plan/README.md",
+      "status": "confirmed",
+      "from": "feature:agent"
+    },
+    {
+      "to": "group:schedule",
+      "relation": "implementedBy",
+      "evidence": "packages/schedule/README.md",
+      "status": "confirmed",
+      "from": "feature:agent"
+    },
+    {
+      "to": "group:session",
+      "relation": "implementedBy",
+      "evidence": "packages/session/README.md",
+      "status": "confirmed",
+      "from": "feature:agent"
+    },
+    {
+      "to": "group:session-query",
+      "relation": "implementedBy",
+      "evidence": "packages/session-query/README.md",
+      "status": "confirmed",
+      "from": "feature:agent"
+    },
+    {
+      "to": "group:skill",
+      "relation": "implementedBy",
+      "evidence": "packages/skill/README.md",
+      "status": "confirmed",
+      "from": "feature:agent"
+    },
+    {
+      "to": "group:todo",
+      "relation": "implementedBy",
+      "evidence": "packages/todo/README.md",
+      "status": "confirmed",
+      "from": "feature:agent"
+    },
+    {
+      "to": "feature:execution",
+      "relation": "offers",
+      "evidence": "docs/architecture.md",
+      "status": "confirmed",
+      "from": "project:dsh"
+    },
+    {
+      "to": "group:browser-use",
+      "relation": "implementedBy",
+      "evidence": "packages/browser-use/README.md",
+      "status": "confirmed",
+      "from": "feature:execution"
+    },
+    {
+      "to": "group:computer-use",
+      "relation": "implementedBy",
+      "evidence": "packages/computer-use/README.md",
+      "status": "confirmed",
+      "from": "feature:execution"
+    },
+    {
+      "to": "group:deliverables",
+      "relation": "implementedBy",
+      "evidence": "packages/deliverables/README.md",
+      "status": "confirmed",
+      "from": "feature:execution"
+    },
+    {
+      "to": "group:experimental",
+      "relation": "implementedBy",
+      "evidence": "packages/experimental/README.md",
+      "status": "confirmed",
+      "from": "feature:execution"
+    },
+    {
+      "to": "group:fs",
+      "relation": "implementedBy",
+      "evidence": "packages/fs/README.md",
+      "status": "confirmed",
+      "from": "feature:execution"
+    },
+    {
+      "to": "group:interaction",
+      "relation": "implementedBy",
+      "evidence": "packages/interaction/README.md",
+      "status": "confirmed",
+      "from": "feature:execution"
+    },
+    {
+      "to": "group:jobs",
+      "relation": "implementedBy",
+      "evidence": "packages/jobs/README.md",
+      "status": "confirmed",
+      "from": "feature:execution"
+    },
+    {
+      "to": "group:lsp",
+      "relation": "implementedBy",
+      "evidence": "packages/lsp/README.md",
+      "status": "confirmed",
+      "from": "feature:execution"
+    },
+    {
+      "to": "group:ptc-runtime",
+      "relation": "implementedBy",
+      "evidence": "packages/ptc-runtime/README.md",
+      "status": "confirmed",
+      "from": "feature:execution"
+    },
+    {
+      "to": "group:sandbox",
+      "relation": "implementedBy",
+      "evidence": "packages/sandbox/README.md",
+      "status": "confirmed",
+      "from": "feature:execution"
+    },
+    {
+      "to": "group:shell",
+      "relation": "implementedBy",
+      "evidence": "packages/shell/README.md",
+      "status": "confirmed",
+      "from": "feature:execution"
+    },
+    {
+      "to": "group:ssh",
+      "relation": "implementedBy",
+      "evidence": "packages/ssh/README.md",
+      "status": "confirmed",
+      "from": "feature:execution"
+    },
+    {
+      "to": "group:subprocess",
+      "relation": "implementedBy",
+      "evidence": "packages/subprocess/README.md",
+      "status": "confirmed",
+      "from": "feature:execution"
+    },
+    {
+      "to": "group:terminal",
+      "relation": "implementedBy",
+      "evidence": "packages/terminal/README.md",
+      "status": "confirmed",
+      "from": "feature:execution"
+    },
+    {
+      "to": "group:web",
+      "relation": "implementedBy",
+      "evidence": "packages/web/README.md",
+      "status": "confirmed",
+      "from": "feature:execution"
+    },
+    {
+      "to": "feature:collaboration",
+      "relation": "offers",
+      "evidence": "docs/architecture.md",
+      "status": "confirmed",
+      "from": "project:dsh"
+    },
+    {
+      "to": "group:experimental",
+      "relation": "implementedBy",
+      "evidence": "packages/experimental/README.md",
+      "status": "confirmed",
+      "from": "feature:collaboration"
+    },
+    {
+      "to": "group:extensions",
+      "relation": "implementedBy",
+      "evidence": "packages/extensions/README.md",
+      "status": "confirmed",
+      "from": "feature:collaboration"
+    },
+    {
+      "to": "group:hooks",
+      "relation": "implementedBy",
+      "evidence": "packages/hooks/README.md",
+      "status": "confirmed",
+      "from": "feature:collaboration"
+    },
+    {
+      "to": "group:jobs",
+      "relation": "implementedBy",
+      "evidence": "packages/jobs/README.md",
+      "status": "confirmed",
+      "from": "feature:collaboration"
+    },
+    {
+      "to": "group:mcp",
+      "relation": "implementedBy",
+      "evidence": "packages/mcp/README.md",
+      "status": "confirmed",
+      "from": "feature:collaboration"
+    },
+    {
+      "to": "group:subagent",
+      "relation": "implementedBy",
+      "evidence": "packages/subagent/README.md",
+      "status": "confirmed",
+      "from": "feature:collaboration"
+    },
+    {
+      "to": "group:webhook",
+      "relation": "implementedBy",
+      "evidence": "packages/webhook/README.md",
+      "status": "confirmed",
+      "from": "feature:collaboration"
+    },
+    {
+      "to": "group:workflow",
+      "relation": "implementedBy",
+      "evidence": "packages/workflow/README.md",
+      "status": "confirmed",
+      "from": "feature:collaboration"
+    },
+    {
+      "to": "feature:interfaces",
+      "relation": "offers",
+      "evidence": "docs/architecture.md",
+      "status": "confirmed",
+      "from": "project:dsh"
+    },
+    {
+      "to": "group:acp",
+      "relation": "implementedBy",
+      "evidence": "packages/acp/README.md",
+      "status": "confirmed",
+      "from": "feature:interfaces"
+    },
+    {
+      "to": "group:api",
+      "relation": "implementedBy",
+      "evidence": "packages/api/README.md",
+      "status": "confirmed",
+      "from": "feature:interfaces"
+    },
+    {
+      "to": "group:apps",
+      "relation": "implementedBy",
+      "evidence": "docs/architecture.md",
+      "status": "confirmed",
+      "from": "feature:interfaces"
+    },
+    {
+      "to": "group:boot",
+      "relation": "implementedBy",
+      "evidence": "packages/boot/README.md",
+      "status": "confirmed",
+      "from": "feature:interfaces"
+    },
+    {
+      "to": "group:bundle",
+      "relation": "implementedBy",
+      "evidence": "packages/bundle/README.md",
+      "status": "confirmed",
+      "from": "feature:interfaces"
+    },
+    {
+      "to": "group:client",
+      "relation": "implementedBy",
+      "evidence": "packages/client/README.md",
+      "status": "confirmed",
+      "from": "feature:interfaces"
+    },
+    {
+      "to": "group:credentials",
+      "relation": "implementedBy",
+      "evidence": "packages/credentials/README.md",
+      "status": "confirmed",
+      "from": "feature:interfaces"
+    },
+    {
+      "to": "group:deliverables",
+      "relation": "implementedBy",
+      "evidence": "packages/deliverables/README.md",
+      "status": "confirmed",
+      "from": "feature:interfaces"
+    },
+    {
+      "to": "group:document",
+      "relation": "implementedBy",
+      "evidence": "packages/document/README.md",
+      "status": "confirmed",
+      "from": "feature:interfaces"
+    },
+    {
+      "to": "group:experimental",
+      "relation": "implementedBy",
+      "evidence": "packages/experimental/README.md",
+      "status": "confirmed",
+      "from": "feature:interfaces"
+    },
+    {
+      "to": "group:host",
+      "relation": "implementedBy",
+      "evidence": "packages/host/README.md",
+      "status": "confirmed",
+      "from": "feature:interfaces"
+    },
+    {
+      "to": "group:interaction",
+      "relation": "implementedBy",
+      "evidence": "packages/interaction/README.md",
+      "status": "confirmed",
+      "from": "feature:interfaces"
+    },
+    {
+      "to": "group:sdk",
+      "relation": "implementedBy",
+      "evidence": "packages/sdk/README.md",
+      "status": "confirmed",
+      "from": "feature:interfaces"
+    },
+    {
+      "to": "group:settings",
+      "relation": "implementedBy",
+      "evidence": "packages/settings/README.md",
+      "status": "confirmed",
+      "from": "feature:interfaces"
+    },
+    {
+      "to": "feature:engineering",
+      "relation": "offers",
+      "evidence": "docs/architecture.md",
+      "status": "confirmed",
+      "from": "project:dsh"
+    },
+    {
+      "to": "group:apps",
+      "relation": "implementedBy",
+      "evidence": "docs/architecture.md",
+      "status": "confirmed",
+      "from": "feature:engineering"
+    },
+    {
+      "to": "group:boot",
+      "relation": "implementedBy",
+      "evidence": "packages/boot/README.md",
+      "status": "confirmed",
+      "from": "feature:engineering"
+    },
+    {
+      "to": "group:core",
+      "relation": "implementedBy",
+      "evidence": "packages/core/README.md",
+      "status": "confirmed",
+      "from": "feature:engineering"
+    },
+    {
+      "to": "group:experimental",
+      "relation": "implementedBy",
+      "evidence": "packages/experimental/README.md",
+      "status": "confirmed",
+      "from": "feature:engineering"
+    },
+    {
+      "to": "group:runtime-diagnostics",
+      "relation": "implementedBy",
+      "evidence": "packages/runtime-diagnostics/README.md",
+      "status": "confirmed",
+      "from": "feature:engineering"
+    },
+    {
+      "to": "group:sdk",
+      "relation": "implementedBy",
+      "evidence": "packages/sdk/README.md",
+      "status": "confirmed",
+      "from": "feature:engineering"
+    },
+    {
+      "to": "group:test-support",
+      "relation": "implementedBy",
+      "evidence": "packages/test-support/README.md",
+      "status": "confirmed",
+      "from": "feature:engineering"
+    },
+    {
+      "to": "group:typert",
+      "relation": "implementedBy",
+      "evidence": "packages/typert/README.md",
+      "status": "confirmed",
+      "from": "feature:engineering"
+    },
+    {
+      "to": "group:util",
+      "relation": "implementedBy",
+      "evidence": "packages/util/README.md",
+      "status": "confirmed",
+      "from": "feature:engineering"
+    }
+  ]
+}

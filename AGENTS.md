@@ -10,6 +10,10 @@ Acknowledge [declared persistence-type changes](docs/cookbook/reviewing-persiste
 
 **Application launch.** Only `dsh` profiles launch supported Node apps; package bins, demos, and public SDK argv escapes are forbidden ([rule](docs/architecture.md#application-launch)).
 
+## Knowledge graph
+
+Every code change or feature addition/removal must review and update the affected [wiki](wiki/index.md) pages and relationships in the same change; follow [maintenance](wiki/MAINTENANCE.md), regenerate with `pnpm run wiki:update`, and validate with `pnpm run wiki:check`. If behavior and architecture are unchanged, state that review outcome.
+
 ## Repository layout
 
 ```
