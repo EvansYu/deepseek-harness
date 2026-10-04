@@ -706,6 +706,15 @@ describe('ConversationRoot resident composer', () => {
     expect(root.style.getPropertyValue('--dsh-chat-user-width')).toBe('')
   })
 
+  it.each([true, false])('keeps composer grips and restored height available when blank=%s', (blank) => {
+    localStorage.setItem('dsh.conversation.inputHeight', '180')
+    const b = mount(sessionSnapshotOf({ blank }))
+    const card = b.view.container.querySelector('[data-composer-card]')
+    expect(card?.querySelectorAll('[data-composer-width-handle]')).toHaveLength(2)
+    expect(b.view.container.querySelectorAll('[data-width-handle]')).toHaveLength(blank ? 0 : 2)
+    expect(card?.querySelector<HTMLElement>('[data-input-scroll]')?.style.height).toBe('180px')
+  })
+
   it('drag → persist → window clamp round-trip on a width handle', () => {
     const b = mount(sessionSnapshotOf())
     const content = b.view.container.querySelector('[data-conversation-content]') as HTMLElement

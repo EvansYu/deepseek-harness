@@ -1,0 +1,5 @@
+- Composer top-edge drag grows the draft: true
+- Draft text survives resizing: true
+- Reload restores the chosen height: true
+- Double-click restores automatic height: true
+- Stored height preference cleared: true

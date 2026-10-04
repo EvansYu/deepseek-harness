@@ -126,7 +126,7 @@
    contenteditable grows with its content inside; the 14-line cap lives here
    because this is the box the cap describes. */
 .scroll {
-  max-height: var(--dsh-composer-text-max-height);
+  max-height: min(var(--dsh-composer-text-max-height), 60dvh);
   overflow-y: auto;
   /* Keeps the bar off the card's right border; .input's right pad gives the
      4px back so the text column is unchanged. */
@@ -416,3 +416,30 @@
 .activity { display: flex; align-items: center; flex: none; }
 .activity:empty { display: none; }
 .activityExpanded { flex: 1; min-width: 0; }
+
+.scroll[style*='height'] { max-height: 60dvh; }
+
+.heightHandle {
+  position: absolute;
+  top: 0;
+  left: 22px;
+  right: 22px;
+  height: 8px;
+  cursor: row-resize;
+  touch-action: none;
+}
+
+.heightHandle::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: calc(50% - 18px);
+  width: 36px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--dsw-alias-scrollbar-bg-l2);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.heightHandle:hover::after { opacity: 1; }

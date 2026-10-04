@@ -469,6 +469,48 @@ describe('web e2e: markdown tables fill the column, wide ones break out and scro
     expect(tripwire.pageErrors).toEqual([])
   }, 120_000)
 
+  it('resizes the composer from both side edges and its top edge', async () => {
+    await settleAt(1680)
+    const card = page.locator('[data-composer-card]')
+    const scroll = page.locator('[data-input-scroll]')
+    const width = () => card.evaluate(element => element.getBoundingClientRect().width)
+    const height = () => scroll.evaluate(element => element.getBoundingClientRect().height)
+    const drag = async (selector: string, dx: number, dy: number) => {
+      const handle = page.locator(selector)
+      const rect = await handle.boundingBox()
+      if (rect === null) throw new Error(`Missing resize handle: ${selector}`)
+      const x = rect.x + rect.width / 2
+      const y = rect.y + rect.height / 2
+      expect(await handle.evaluate((element, point) => element.contains(document.elementFromPoint(point.x, point.y)), { x, y })).toBe(true)
+      await page.mouse.move(x, y)
+      await page.mouse.down()
+      await page.mouse.move(x + dx, y + dy, { steps: 8 })
+      await page.mouse.up()
+    }
+    const original = await width()
+    try {
+      await drag('[data-composer-width-handle="right"]', 40, 0)
+      await expect.poll(width).toBeGreaterThan(original + 60)
+      const wider = await width()
+      await drag('[data-composer-width-handle="left"]', 30, 0)
+      await expect.poll(width).toBeLessThan(wider - 40)
+      const originalHeight = await height()
+      await drag('[data-composer-height-handle]', 0, -120)
+      await expect.poll(height).toBeGreaterThan(originalHeight + 100)
+      const stored = await page.evaluate(() => localStorage.getItem('dsh.conversation.inputHeight'))
+      expect(Number(stored)).toBeGreaterThan(originalHeight + 100)
+      await page.setViewportSize({ width: 900, height: 400 })
+      await expect.poll(height).toBeLessThanOrEqual(240)
+      await page.locator('[data-composer-height-handle]').dblclick()
+      await expect.poll(height).toBe(originalHeight)
+      expect(await page.evaluate(() => localStorage.getItem('dsh.conversation.inputHeight'))).toBeNull()
+      expect(tripwire.pageErrors).toEqual([])
+    } finally {
+      await page.evaluate(() => { localStorage.removeItem('dsh.conversation.contentWidth'); localStorage.removeItem('dsh.conversation.inputHeight') })
+      await settleAt(1680)
+    }
+  }, 120_000)
+
   it('keeps the fill/scroll relations under page zoom', async () => {
     onTestFailed(() => saveFailureShot(page, 'web-e2e-markdown-wide-table-zoom'))
     await sweep()

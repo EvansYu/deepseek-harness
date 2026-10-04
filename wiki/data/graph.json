@@ -563,7 +563,7 @@
       "path": "apps/web",
       "description": "Web application entry: vite build over the @deepseek-ai/dsh-client-web shell library; dist/ served by apps/cli's dsh web",
       "docs": "apps/web/package.json",
-      "sourceDigest": "714e09f848ef703ef864a70df8b8d8da860dd332af02c623f119a5acefd115fc",
+      "sourceDigest": "1c1f92e09f0647a7a0c108d40740a8c07e6f165dc9ecf07ecf4b0a25871940af",
       "source": [
         "apps/web/src/main.ts",
         "apps/web/src/node-module-stub.ts",
@@ -1734,7 +1734,7 @@
       "path": "packages/client/ui-conversation",
       "description": "Target-neutral 对话装配与浏览器 shell：事件和视图注册表、逐会话 binding、输入状态、slot 与临时 composer takeover。",
       "docs": "packages/client/ui-conversation/README.zh.md",
-      "sourceDigest": "abbd897ff60a36274424e58de370d07715757c3733c8a0854d0f1295f27d6eb7",
+      "sourceDigest": "a06099d478adf661f96150bd23a9db2f92656eb43bbdad442625c7d9b7889340",
       "source": [
         "packages/client/ui-conversation/src/client/apply.ts",
         "packages/client/ui-conversation/src/client/context-occupancy.ts",
@@ -1785,6 +1785,7 @@
         "packages/client/ui-conversation/src/client/queue/QueueDock.tsx",
         "packages/client/ui-conversation/src/client/service.ts",
         "packages/client/ui-conversation/src/client/settings/EnterBehaviorRow.tsx",
+        "packages/client/ui-conversation/src/client/skeleton/ComposerHeightControl.tsx",
         "packages/client/ui-conversation/src/client/skeleton/ContextMeter.tsx",
         "packages/client/ui-conversation/src/client/skeleton/ConversationContent.tsx",
         "packages/client/ui-conversation/src/client/skeleton/ConversationHeader.tsx",
@@ -1810,6 +1811,7 @@
         "packages/client/ui-conversation/tests/apply-wiring.client.spec.tsx",
         "packages/client/ui-conversation/tests/assembly-surfaces.client.spec.tsx",
         "packages/client/ui-conversation/tests/async-insertion.client.spec.ts",
+        "packages/client/ui-conversation/tests/composer-height.client.spec.tsx",
         "packages/client/ui-conversation/tests/config.host.spec.ts",
         "packages/client/ui-conversation/tests/context-meter.client.spec.tsx",
         "packages/client/ui-conversation/tests/control-row-layout.client.spec.ts",

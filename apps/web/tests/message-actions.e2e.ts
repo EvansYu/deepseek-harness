@@ -318,6 +318,42 @@ describe('web e2e: message IconActions and clocks on settled history', () => {
     await compareOrRefreshGolden(UI_EXPECTED, snapshot, MODE)
   })
 
+  it.skipIf(MODE === 'record')('resizes the input above recorded conversation history', async () => {
+    const input = page.locator('[data-composer-input]')
+    const scroll = page.locator('[data-input-scroll]')
+    const handle = page.locator('[data-composer-height-handle]')
+    const draft = 'A draft retained while resizing the input.'
+    await input.fill(draft)
+    const before = await scroll.evaluate(element => element.getBoundingClientRect().height)
+    const rect = await handle.boundingBox()
+    if (rect === null) throw new Error('Composer height handle is missing')
+    const x = rect.x + rect.width / 2
+    const y = rect.y + rect.height / 2
+    await page.mouse.move(x, y)
+    await page.mouse.down()
+    await page.mouse.move(x, y - 96, { steps: 6 })
+    await page.mouse.up()
+    await expect.poll(() => scroll.evaluate(element => element.getBoundingClientRect().height)).toBeGreaterThan(before + 80)
+    const retained = await input.textContent() === draft
+    const chosenHeight = await scroll.evaluate(element => element.getBoundingClientRect().height)
+    const warningStart = tripwire.warnings.length
+    await page.reload()
+    await handle.waitFor({ timeout: 15_000 })
+    await expect.poll(() => scroll.evaluate(element => element.getBoundingClientRect().height)).toBe(chosenHeight)
+    acknowledgeReloadConnectionLoss(tripwire, warningStart)
+    await handle.dblclick()
+    await expect.poll(() => scroll.evaluate(element => element.getBoundingClientRect().height)).toBe(before)
+    const cleared = await page.evaluate(() => localStorage.getItem('dsh.conversation.inputHeight') === null)
+    await compareOrRefreshGolden(fileURLToPath(new URL('./expected/composer-resize/height.expected.md', import.meta.url)), [
+      '- Composer top-edge drag grows the draft: true',
+      `- Draft text survives resizing: ${String(retained)}`,
+      '- Reload restores the chosen height: true',
+      '- Double-click restores automatic height: true',
+      `- Stored height preference cleared: ${String(cleared)}`,
+    ].join('\n'), MODE)
+    await input.fill('')
+  })
+
   it.skipIf(MODE === 'record')('persists performance detail and hides statistics in Compact', async () => {
     onTestFailed(() => saveFailureShot(page, 'web-e2e-performance-usage'))
     const stats = page.locator('[data-composer-stats]')

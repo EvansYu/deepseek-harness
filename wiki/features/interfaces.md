@@ -14,7 +14,7 @@
 
 ## 对话工作台
 
-Web 包含工作区和会话导航、流式对话、工具详情、工作分组、轨迹、模型选择、命令、引用建议、目标与计划显示。批准和提问走明确的人机交互服务。
+Web 包含工作区和会话导航、流式对话、工具详情、工作分组、轨迹、模型选择、命令、引用建议、目标与计划显示。批准和提问走明确的人机交互服务。主会话输入框支持左右边缘拖动调整宽度，顶部边缘上下拖动调整草稿高度；高度在浏览器中记忆，双击顶部恢复自动增长，窄视口限制可见高度。实现与交互细节见 [ui-conversation](../../packages/client/ui-conversation/README.zh.md)。
 
 能力入口：[client](../capabilities/client.md)、[api](../capabilities/api.md)、[interaction](../capabilities/interaction.md)。
 

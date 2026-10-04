@@ -1,4 +1,5 @@
-import { useCallback, useLayoutEffect, useRef } from 'react'
+import { useCallback, useLayoutEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import type { ConversationWidthControlsProps } from '../contract/slots.ts'
 import css from './ConversationRoot.module.css'
 
@@ -39,6 +40,7 @@ function wheelDeltaY(event: React.WheelEvent, scrollport: HTMLElement): number {
 
 /** One pointer-captured transcript width handle. */
 function WidthHandle(props: {
+  composer?: boolean
   side: 'left' | 'right'
   onStart: () => number
   onDrag: (width: number) => void
@@ -103,6 +105,7 @@ function WidthHandle(props: {
     callbacks.current.onEnd()
   }, [])
   const onWheel = useCallback((event: React.WheelEvent<HTMLDivElement>) => {
+    if (callbacks.current.composer) return
     const body = event.currentTarget.parentElement
     /* v8 ignore next -- a width handle renders only inside the Conversation body. */
     if (body === null) return
@@ -115,9 +118,11 @@ function WidthHandle(props: {
 
   return (
     <div
-      className={css.widthHandle}
+      className={props.composer ? css.composerWidthHandle : css.widthHandle}
       data-side={props.side}
-      data-width-handle={props.side}
+      data-width-handle={props.composer ? undefined : props.side}
+      data-composer-width-handle={props.composer ? props.side : undefined}
+      onClick={props.composer ? (event) => { event.stopPropagation() } : undefined}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
@@ -131,9 +136,13 @@ function WidthHandle(props: {
 /**
  * Install the main Conversation width axis and render its drag handles.
  * @param props - Mounted Conversation body and current presentation phase.
- * @returns two active-phase width handles, or no controls outside the active phase.
+ * @returns transcript gutter handles and composer-edge handles sharing one width preference.
  */
 export function ConversationWidthControls({ container, phase }: ConversationWidthControlsProps) {
+  const [card, setCard] = useState<HTMLElement | null>(null)
+  useLayoutEffect(() => {
+    setCard(container?.querySelector<HTMLElement>('[data-composer-card]') ?? null)
+  }, [container, phase])
   const publishWidths = useCallback((container: HTMLDivElement): void => {
     const target = container.parentElement ?? container
     const column = container.offsetWidth
@@ -168,10 +177,11 @@ export function ConversationWidthControls({ container, phase }: ConversationWidt
     if (container !== null) publishWidths(container)
   }, [container, publishWidths])
 
-  if (container === null || phase !== 'active') return null
-  return (['left', 'right'] as const).map(side => (
+  if (container === null || phase === 'settling') return null
+  const handles = (composer: boolean) => (['left', 'right'] as const).map(side => (
     <WidthHandle
       key={side}
+      composer={composer}
       side={side}
       onStart={onStart}
       onDrag={onDrag}
@@ -179,4 +189,8 @@ export function ConversationWidthControls({ container, phase }: ConversationWidt
       onEnd={onEnd}
     />
   ))
+  return <>
+    {phase === 'active' && handles(false)}
+    {card !== null && createPortal(handles(true), card)}
+  </>
 }

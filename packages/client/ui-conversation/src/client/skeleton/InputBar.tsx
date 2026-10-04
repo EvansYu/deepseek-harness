@@ -36,6 +36,7 @@ import {
 } from '../input/editor/view-binding.ts'
 import { resolveSubmitMode } from '../input/submission-policy.ts'
 import { attachmentErrorText, imageSizeText } from '../image-labels.ts'
+import { ComposerHeightControl } from './ComposerHeightControl.tsx'
 import { ContextMeter } from './ContextMeter.tsx'
 import { observeControlRow } from './control-row-layout.ts'
 import css from './InputBar.module.css'
@@ -414,6 +415,7 @@ export const InputBar = memo(function InputBar({
           hint={hint}
           showPlaceholder={draft === '' && attachments.length === 0 && !claimActive}
         />
+        <ComposerHeightControl scrollRef={scrollRef} />
         <div ref={rowRef} className={css.row}>
           <div className={css.tools} hidden={activity}>
             <Tooltip label={t('input.commands')} side="top" delayMs={500}>
