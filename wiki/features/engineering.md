@@ -13,9 +13,9 @@
 
 ## 类型与扩展
 
-Typert 生成类型图并支持 RPC；Cordis 类型化事件和可释放注册组织插件。运行时诊断使用包拥有的不变量发现独立观察之间的偏差。
+Typert 生成类型图并支持 RPC；Cordis 类型化事件和可释放注册组织插件。
 
-能力入口：[typert](../capabilities/typert.md)、[runtime-diagnostics](../capabilities/runtime-diagnostics.md)、[core](../capabilities/core.md)。
+能力入口：[typert](../capabilities/typert.md)、[core](../capabilities/core.md)。
 
 ## 验证层次
 

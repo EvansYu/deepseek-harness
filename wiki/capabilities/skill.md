@@ -2,7 +2,7 @@
 
 ## 概述
 
-本页由包清单与 README 元数据生成；共 6 个包。功能配置、限制和使用方式以[所属文档](../../packages/skill/README.zh.md)为准。
+本页由包清单与 README 元数据生成；共 5 个包。功能配置、限制和使用方式以[所属文档](../../packages/skill/README.zh.md)为准。
 
 ## 目录
 
@@ -13,7 +13,6 @@
 
 | 包 | 功能与证据 | 验证入口 |
 |---|---|---|
-| [skill-badge](../../packages/skill/skill-badge/package.json) | 随包附带的「powered by dsh」徽章 skill（技能），供启用、使用或排查该可选徽章提供方的用户与维护者阅读。 [说明](../../packages/skill/skill-badge/README.zh.md) | [1 个测试文件](../../packages/skill/skill-badge/tests/skill-badge.spec.ts) |
 | [skill-filesystem](../../packages/skill/skill-filesystem/package.json) | 本地文件系统 skill 提供方，供编写本地 skill 或配置项目、自定义与用户 skill 根目录如何被发现与监视的用户与维护者阅读。 [说明](../../packages/skill/skill-filesystem/README.zh.md) | [2 个测试文件](../../packages/skill/skill-filesystem/tests/skill-filesystem-watcher.spec.ts) |
 | [skill-office](../../packages/skill/skill-office/package.json) | 随包附带的 Word、PowerPoint 和 Excel 指令，供需要 Office 文件编写与结构检查能力的部署使用。 [说明](../../packages/skill/skill-office/README.zh.md) | [2 个测试文件](../../packages/skill/skill-office/tests/checkers.spec.ts) |
 | [skill](../../packages/skill/skill/package.json) | skill（技能）提供方注册表，供选择、配置或排查来自任意来源的 skill 如何被合并、解析与加载的用户与维护者阅读。 [说明](../../packages/skill/skill/README.zh.md) | [1 个测试文件](../../packages/skill/skill/tests/skill.spec.ts) |

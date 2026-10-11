@@ -21,7 +21,7 @@
 | [host-open-in-app](../../packages/host/open-in-app/package.json) | open-in-app 的主机半边：在 macOS、Windows、Linux 上把已安装的编辑器、Git GUI、终端与文件管理器解析为已验证的启动器，并以三条 webServer 路由提供目录、图标与启动端点。 [说明](../../packages/host/open-in-app/README.zh.md) | [4 个测试文件](../../packages/host/open-in-app/tests/host-routes.spec.ts) |
 | [host-plugin-inventory](../../packages/host/plugin-inventory/package.json) | 当前 Cordis Loader 插件状态的只读投影，并附带每个 agent preset（智能体预设）的组合：面向 web GUI 宿主客户端的 pluginInventory 服务及其 pluginInventory/list Remote。 [说明](../../packages/host/plugin-inventory/README.zh.md) | [1 个测试文件](../../packages/host/plugin-inventory/tests/inventory.spec.ts) |
 | [host-product-telemetry-otel](../../packages/host/product-telemetry-otel/package.json) | 配置显式产品使用事件、OTLP/HTTP 路由、批量发送与退出等待上限。 [说明](../../packages/host/product-telemetry-otel/README.zh.md) | [1 个测试文件](../../packages/host/product-telemetry-otel/tests/telemetry.spec.ts) |
-| [host-webserver](../../packages/host/webserver/package.json) | web GUI 宿主的 HTTP 服务器：具名路由与 upgrade 注册、index 转换，以及服务 Web 壳 SPA dist 的唯一回退席位。 [说明](../../packages/host/webserver/README.zh.md) | [1 个测试文件](../../packages/host/webserver/tests/webserver.spec.ts) |
+| [host-webserver](../../packages/host/webserver/package.json) | web GUI 宿主的 HTTP 服务器：具名路由与 upgrade 注册、可选的 TLS 监听、index 转换，以及服务 Web 壳 SPA dist 的唯一回退席位。 [说明](../../packages/host/webserver/README.zh.md) | [1 个测试文件](../../packages/host/webserver/tests/webserver.spec.ts) |
 
 ## 开发备注
 

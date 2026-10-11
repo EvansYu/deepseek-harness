@@ -13,7 +13,7 @@
 
 | 包 | 功能与证据 | 验证入口 |
 |---|---|---|
-| [settings](../../packages/settings/settings/package.json) | 通过 Config 派生表单查看和编辑插件的即时配置。 [说明](../../packages/settings/settings/README.zh.md) | [4 个测试文件](../../packages/settings/settings/tests/configuration.spec.ts) |
+| [settings](../../packages/settings/settings/package.json) | 通过 Config 派生表单查看和编辑插件的即时配置。 [说明](../../packages/settings/settings/README.zh.md) | [5 个测试文件](../../packages/settings/settings/tests/configuration-inheritance.spec.ts) |
 
 ## 开发备注
 

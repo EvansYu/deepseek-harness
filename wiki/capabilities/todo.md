@@ -13,7 +13,7 @@
 
 | 包 | 功能与证据 | 验证入口 |
 |---|---|---|
-| [tool-todo](../../packages/todo/tool-todo/package.json) | 面向 DeepSeek Harness 会话日志的模型侧 todo_write 工具：整表替换、单一会话归属与 todos 投影，供选择、配置或排查该工具的用户与维护者阅读。 [说明](../../packages/todo/tool-todo/README.zh.md) | [5 个测试文件](../../packages/todo/tool-todo/tests/integration.spec.ts) |
+| [tool-todo](../../packages/todo/tool-todo/package.json) | 面向 DeepSeek Harness 会话日志的模型侧 todo_write 工具：整表替换、单一会话归属与 todos 投影，供选择、配置或排查该工具的用户与维护者阅读。 [说明](../../packages/todo/tool-todo/README.zh.md) | [4 个测试文件](../../packages/todo/tool-todo/tests/integration.spec.ts) |
 
 ## 开发备注
 

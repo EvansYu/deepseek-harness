@@ -13,11 +13,11 @@
 
 | 包 | 功能与证据 | 验证入口 |
 |---|---|---|
-| [commands](../../packages/interaction/commands/package.json) | 交互式 UI 的面向用户斜杠命令注册表：插件拥有的命令直接针对 agent（智能体）执行，不产生模型消息；供组合或扩展命令面的用户与维护者阅读。 [说明](../../packages/interaction/commands/README.zh.md) | [2 个测试文件](../../packages/interaction/commands/tests/commands.spec.ts) |
-| [permission-presets](../../packages/interaction/permission-presets/package.json) | 面向用户的权限预设：供选择、配置或排查把沙箱模式与审批策略捆绑在一起的 Permissions 选择器的用户与维护者阅读。 [说明](../../packages/interaction/permission-presets/README.zh.md) | [3 个测试文件](../../packages/interaction/permission-presets/tests/invariant.spec.ts) |
+| [commands](../../packages/interaction/commands/package.json) | 交互式 UI 的面向用户斜杠命令注册表：插件拥有的命令直接针对 agent（智能体）执行，不产生模型消息；供组合或扩展命令面的用户与维护者阅读。 [说明](../../packages/interaction/commands/README.zh.md) | [1 个测试文件](../../packages/interaction/commands/tests/commands.spec.ts) |
+| [permission-presets](../../packages/interaction/permission-presets/package.json) | 面向用户的权限预设：供选择、配置或排查把沙箱模式与审批策略捆绑在一起的 Permissions 选择器的用户与维护者阅读。 [说明](../../packages/interaction/permission-presets/README.zh.md) | [2 个测试文件](../../packages/interaction/permission-presets/tests/permission-presets.spec.ts) |
 | [tool-ask-user](../../packages/interaction/tool-ask-user/package.json) | 基于 user-questions seam 的模型侧 ask_user_question 工具；供组合或排查交互式 agent（智能体）表面的用户与维护者阅读。 [说明](../../packages/interaction/tool-ask-user/README.zh.md) | [1 个测试文件](../../packages/interaction/tool-ask-user/tests/tool-ask-user.spec.ts) |
-| [user-approval](../../packages/interaction/user-approval/package.json) | 与通道无关的一次性审批 seam；供组合应答者、设置策略或排查以拒绝方式关闭的权限决定的用户与维护者阅读。 [说明](../../packages/interaction/user-approval/README.zh.md) | [2 个测试文件](../../packages/interaction/user-approval/tests/approval.spec.ts) |
-| [user-questions](../../packages/interaction/user-questions/package.json) | 基于 waterfall 的问答服务，用于工具、权限插件、本地 answerer 与 Agent-scoped Web 交互。 [说明](../../packages/interaction/user-questions/README.zh.md) | [1 个测试文件](../../packages/interaction/user-questions/tests/user-questions.spec.ts) |
+| [user-approval](../../packages/interaction/user-approval/package.json) | 与通道无关的一次性审批 seam；供组合应答者、设置策略或排查以拒绝方式关闭的权限决定的用户与维护者阅读。 [说明](../../packages/interaction/user-approval/README.zh.md) | [1 个测试文件](../../packages/interaction/user-approval/tests/approval.spec.ts) |
+| [user-questions](../../packages/interaction/user-questions/package.json) | 基于 waterfall 的问答服务，用于工具、权限插件、本地 answerer 与 Agent-scoped Web 交互。 [说明](../../packages/interaction/user-questions/README.zh.md) | [3 个测试文件](../../packages/interaction/user-questions/tests/projection.spec.ts) |
 
 ## 开发备注
 

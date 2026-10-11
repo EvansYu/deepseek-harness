@@ -13,7 +13,7 @@
 
 | 包 | 功能与证据 | 验证入口 |
 |---|---|---|
-| [storage-domain](../../packages/storage/storage-domain/package.json) | 领域数据形式（ctx.storageDomain）：面向在存储后端之上选择、挂载或排查经过 schema 校验、发出变更事件的 KV 领域的宿主与维护者。 [说明](../../packages/storage/storage-domain/README.zh.md) | [2 个测试文件](../../packages/storage/storage-domain/tests/domain.spec.ts) |
+| [storage-domain](../../packages/storage/storage-domain/package.json) | 领域数据形式（ctx.storageDomain）：面向在存储后端之上选择、挂载或排查经过 schema 校验、发出变更事件的 KV 领域的宿主与维护者。 [说明](../../packages/storage/storage-domain/README.zh.md) | [1 个测试文件](../../packages/storage/storage-domain/tests/domain.spec.ts) |
 | [storage-json](../../packages/storage/storage-json/package.json) | JSON 存储后端：面向在配置根目录下选择、配置或排查整单元文件与逐记录文件的宿主与维护者。 [说明](../../packages/storage/storage-json/README.zh.md) | [1 个测试文件](../../packages/storage/storage-json/tests/json-backend.spec.ts) |
 | [storage-sqlite](../../packages/storage/storage-sqlite/package.json) | SQLite 存储后端：面向在单个数据库文件中选择、配置或排查按行存储文档的 KV 存储的宿主与维护者。 [说明](../../packages/storage/storage-sqlite/README.zh.md) | [1 个测试文件](../../packages/storage/storage-sqlite/tests/sqlite-backend.spec.ts) |
 | [storage](../../packages/storage/storage/package.json) | 存储枢纽（ctx.storage）：面向选择、挂载或排查具名存储后端与数据形式设施的组合方与维护者。 [说明](../../packages/storage/storage/README.zh.md) | [1 个测试文件](../../packages/storage/storage/tests/registry.spec.ts) |

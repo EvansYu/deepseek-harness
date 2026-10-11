@@ -21,7 +21,7 @@
 | [shell](../../packages/shell/shell/package.json) | 面向开发者与维护者的 shell 执行器 seam 说明，用于选择、组合或实现基于 ctx.shell 的命令执行。 [说明](../../packages/shell/shell/README.zh.md) | [2 个测试文件](../../packages/shell/shell/tests/render.spec.ts) |
 | [tool-bash-persistent](../../packages/shell/tool-bash-persistent/package.json) | 面向模型的持久 bash 工具，供选择、配置或排查跨调用保留的按所有者隔离 shell 状态的使用者与维护者阅读。 [说明](../../packages/shell/tool-bash-persistent/README.zh.md) | [2 个测试文件](../../packages/shell/tool-bash-persistent/tests/loader-composition.spec.ts) |
 | [tool-bash](../../packages/shell/tool-bash/package.json) | 面向模型的 bash 工具，供选择、配置或排查一次性命令执行、后台任务与沙箱升权的使用者与维护者阅读。 [说明](../../packages/shell/tool-bash/README.zh.md) | [4 个测试文件](../../packages/shell/tool-bash/tests/background-start.spec.ts) |
-| [tool-pwsh-persistent](../../packages/shell/tool-pwsh-persistent/package.json) | 面向模型的持久 pwsh 工具，供选择、配置或排查跨调用保留的按所有者隔离 PowerShell 状态的使用者与维护者阅读。 [说明](../../packages/shell/tool-pwsh-persistent/README.zh.md) | [2 个测试文件](../../packages/shell/tool-pwsh-persistent/tests/loader-composition.spec.ts) |
+| [tool-pwsh-persistent](../../packages/shell/tool-pwsh-persistent/package.json) | 面向模型的持久 pwsh 工具，供选择、配置或排查跨调用保留的按所有者隔离 PowerShell 状态的使用者与维护者阅读。 [说明](../../packages/shell/tool-pwsh-persistent/README.zh.md) | [3 个测试文件](../../packages/shell/tool-pwsh-persistent/tests/loader-composition.spec.ts) |
 | [tool-pwsh](../../packages/shell/tool-pwsh/package.json) | 面向模型的 pwsh 工具，供选择、配置或排查 Windows 上一次性 PowerShell 执行、后台任务与沙箱升权的使用者与维护者阅读。 [说明](../../packages/shell/tool-pwsh/README.zh.md) | [5 个测试文件](../../packages/shell/tool-pwsh/tests/background-start.spec.ts) |
 
 ## 开发备注

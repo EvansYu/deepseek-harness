@@ -13,9 +13,9 @@
 
 | 包 | 功能与证据 | 验证入口 |
 |---|---|---|
-| [@deepseek-ai/dsh](../../apps/cli/package.json) | dsh CLI: profile launch, plugin management, and configuration inspection [说明](../../apps/cli/README.zh.md) | [13 个测试文件](../../apps/cli/tests/args.spec.ts) |
-| [desktop-host](../../apps/desktop-host/package.json) | Private Node-mode host process for the Electron desktop application [说明](../../apps/desktop-host/package.json)；私有包 | [3 个测试文件](../../apps/desktop-host/tests/office-engine.spec.ts) |
-| [desktop](../../apps/desktop/package.json) | Electron desktop shell for a bundled dsh runtime and external plugins [说明](../../apps/desktop/README.zh.md)；私有包 | [106 个测试文件](../../apps/desktop/tests/account-backend.spec.ts) |
+| [@deepseek-ai/dsh](../../apps/cli/package.json) | dsh CLI: profile launch, plugin management, and configuration inspection [说明](../../apps/cli/README.zh.md) | [14 个测试文件](../../apps/cli/tests/args.spec.ts) |
+| [desktop-host](../../apps/desktop-host/package.json) | Private Node-mode host process for the Electron desktop application [说明](../../apps/desktop-host/package.json)；私有包 | [4 个测试文件](../../apps/desktop-host/tests/office-engine.spec.ts) |
+| [desktop](../../apps/desktop/package.json) | Electron desktop shell for a bundled dsh runtime and external plugins [说明](../../apps/desktop/README.zh.md)；私有包 | [130 个测试文件](../../apps/desktop/tests/account-backend.spec.ts) |
 | [web-frontend](../../apps/web/package.json) | Web application entry: vite build over the @deepseek-ai/dsh-client-web shell library; dist/ served by apps/cli's dsh web [说明](../../apps/web/package.json) | [3 个测试文件](../../apps/web/tests/assembled-remote.spec.ts) |
 
 ## 开发备注

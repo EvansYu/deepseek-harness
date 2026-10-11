@@ -13,7 +13,7 @@
 
 | 包 | 功能与证据 | 验证入口 |
 |---|---|---|
-| [workspace](../../packages/workspace/workspace/package.json) | 面向选择、挂载或排查持久 workspace 记录与会话头校验成员资格的宿主的 Workspace 实体注册表（ctx.workspaceRegistry）说明。 [说明](../../packages/workspace/workspace/README.zh.md) | [2 个测试文件](../../packages/workspace/workspace/tests/invariant.spec.ts) |
+| [workspace](../../packages/workspace/workspace/package.json) | 面向选择、挂载或排查持久 workspace 记录与会话头校验成员资格的宿主的 Workspace 实体注册表（ctx.workspaceRegistry）说明。 [说明](../../packages/workspace/workspace/README.zh.md) | [1 个测试文件](../../packages/workspace/workspace/tests/workspace.spec.ts) |
 
 ## 开发备注
 

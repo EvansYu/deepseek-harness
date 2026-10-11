@@ -2,7 +2,7 @@
 
 ## 概述
 
-复杂任务可拆分给子智能体，借助工作流编排，或由经过验证的外部事件触发。
+复杂任务可拆分给子智能体，借助工作流编排，并接入外部工具。
 
 ## 目录
 
@@ -25,9 +25,9 @@ workflow 提供编排服务，PTC 引擎执行工作流，workflow 与 Ralph 工
 
 ## 外部接入
 
-MCP 将外部服务器工具引入本地工具系统；hook 桥适配 Claude Code/Codex 协议；webhook 经认证适配器和可信规则创建普通工作区会话；extensions 提供运行时插件检查与动态挂载能力。
+MCP 将外部服务器工具引入本地工具系统；extensions 提供运行时插件检查与动态挂载能力。
 
-能力入口：[mcp](../capabilities/mcp.md)、[hooks](../capabilities/hooks.md)、[webhook](../capabilities/webhook.md)、[extensions](../capabilities/extensions.md)。
+能力入口：[mcp](../capabilities/mcp.md)、[extensions](../capabilities/extensions.md)。
 
 ## 验证和限制
 

@@ -14,7 +14,7 @@
 | 包 | 功能与证据 | 验证入口 |
 |---|---|---|
 | [cordis-client-runner](../../packages/extensions/cordis-client-runner/package.json) | 动态 Cordis 包的浏览器半说明，供选择、组合或排查页面如何应答运行请求并装载浏览器半代码的用户与维护者阅读。 [说明](../../packages/extensions/cordis-client-runner/README.zh.md) | [7 个测试文件](../../packages/extensions/cordis-client-runner/tests/api-catalog.client.spec.ts) |
-| [cordis-host-runner](../../packages/extensions/cordis-host-runner/package.json) | 动态 Cordis 包的 host 半说明，供选择、组合或排查注册表、沙箱与运行往返的 agent（智能体）与维护者阅读。 [说明](../../packages/extensions/cordis-host-runner/README.zh.md) | [5 个测试文件](../../packages/extensions/cordis-host-runner/tests/composition.spec.ts) |
+| [cordis-host-runner](../../packages/extensions/cordis-host-runner/package.json) | 动态 Cordis 包的 host 半说明，供选择、组合或排查注册表、沙箱与运行往返的 agent（智能体）与维护者阅读。 [说明](../../packages/extensions/cordis-host-runner/README.zh.md) | [6 个测试文件](../../packages/extensions/cordis-host-runner/tests/composition.spec.ts) |
 | [tool-cordis](../../packages/extensions/tool-cordis/package.json) | 为开发和配置已安装 Harness 插件的 agent 提供只读运行时 API 查询。 [说明](../../packages/extensions/tool-cordis/README.zh.md) | [3 个测试文件](../../packages/extensions/tool-cordis/tests/config.spec.ts) |
 | [client-ui-cordis](../../packages/extensions/ui-cordis/package.json) | 历史 Cordis 卡片及进程内 runner 定义的控件。 [说明](../../packages/extensions/ui-cordis/README.zh.md) | [4 个测试文件](../../packages/extensions/ui-cordis/tests/card-model.client.spec.ts) |
 
