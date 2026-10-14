@@ -38,6 +38,11 @@ export interface ChatNodeStore {
   /** @param key - Chat Node identity. @returns whether the visible Node belongs to the last Turn in the loaded timeline. */
   bottomSource(key: string): ObservableSnapshot<boolean>
   /**
+   * @param key - Chat Node identity.
+   * @returns whether the visible Node belongs to the latest loaded exchange (see `ChatConversationViewNode.groupTree`).
+   */
+  bottomSource(key: string): ObservableSnapshot<boolean>
+  /**
    * Observe one Turn's data for a single Node kind, including hidden Nodes, in anchor order.
    * Other Turns and kinds do not notify this source.
    * @param turn - resolved owning Turn.

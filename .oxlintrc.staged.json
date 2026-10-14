@@ -2,7 +2,9 @@
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "extends": ["./.oxlintrc.json"],
   "options": {
-    "typeAware": false
+    "typeAware": false,
+    // Type-rule suppressions are checked by the full type-aware lint.
+    "reportUnusedDisableDirectives": "off"
   },
   "ignorePatterns": [
     "**/lib/**",
