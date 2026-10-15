@@ -9,30 +9,15 @@
   ],
   "references": [
     {
+      "path": "../../../vendor/cosmokit"
+    },
+    {
       "path": "../../../vendor/cordis"
     },
     {
       "path": "../../core/agent"
     },
     {
-<<<<<<<< HEAD:packages/session/working-directory/tsconfig.json
-      "path": "../../fs/fs"
-    },
-    {
-      "path": "../../llm/llm"
-    },
-    {
-      "path": "../../core/session"
-    },
-    {
-      "path": "../session-projection"
-    },
-    {
-      "path": "../../core/system-prompt"
-    },
-    {
-      "path": "../../../vendor/schemastery"
-========
       "path": "../../core/session"
     },
     {
@@ -43,7 +28,6 @@
     },
     {
       "path": "../../bundle/web-app"
->>>>>>>> origin/master:packages/context/harness-dev-context/tsconfig.json
     }
   ]
 }

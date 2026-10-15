@@ -218,12 +218,6 @@ export interface HostConnectionHandle {
   readonly allowsRemoteAuthorities: boolean
 
   /**
-   * Whether this deployment accepts authorities beyond loopback: true only
-   * when a validated `trustedHosts` entry names a non-loopback hostname.
-   */
-  readonly allowsRemoteAuthorities: boolean
-
-  /**
    * Compose exact Fetch routes and the shared-channel RPC interceptor.
    * @param channel - shared channel mounted by Connection.
    * @returns Fetch handler for trusted, authenticated requests.
