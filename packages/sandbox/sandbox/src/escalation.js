@@ -16,6 +16,7 @@
  * @module dsh-sandbox/escalation
  */
 import { assertNever } from '@deepseek-ai/dsh-util-values';
+import { escalationDisplayReason } from "./locales.js";
 /**
  * The strictly-wider table: what a call whose effective mode is the key may
  * escalate TO. Checked at EXECUTION, never baked into a tool schema — the
@@ -120,10 +121,7 @@ export async function approveEscalation(request, approval) {
         toolName: approval.toolName,
         callId: approval.callId,
         reason: `escalate sandbox to ${mode}: ${justification}`,
-        displayReason: {
-            en: `Allow this operation with ${mode} permissions: ${justification}`,
-            zh: `允许本次操作使用 ${mode} 权限：${justification}`,
-        },
+        displayReason: escalationDisplayReason(mode, justification),
         ...approval.signal ? { signal: approval.signal } : {},
     });
     switch (outcome) {

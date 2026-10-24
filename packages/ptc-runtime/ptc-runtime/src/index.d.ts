@@ -3,10 +3,10 @@
  * Runtimes know nothing about tools or sessions; consumers own those concerns.
  * @module @deepseek-ai/dsh-ptc-runtime
  */
-import { Context, Service } from '@deepseek-ai/cordis'
-import type { PtcRunRequest, PtcRunResult, PtcRunSpec } from './types.ts'
-import type { SandboxMode } from '@deepseek-ai/dsh-sandbox'
-export type { PtcBindingErrorClass, PtcBindingFunction, PtcBindingNamespace, PtcJsonValue, PtcRunFailure, PtcRunRequest, PtcRunResult, PtcRunSpec, PtcRunSandbox } from './types.ts'
+import { Context, Service } from '@deepseek-ai/cordis';
+import type { PtcRunRequest, PtcRunResult, PtcRunSpec } from './types.ts';
+import type { SandboxMode } from '@deepseek-ai/dsh-sandbox';
+export type { PtcBindingErrorClass, PtcBindingFunction, PtcBindingNamespace, PtcJsonValue, PtcRunFailure, PtcRunRequest, PtcRunResult, PtcRunSpec, PtcRunSandbox, } from './types.ts';
 /**
  * Binding globals EVERY backend refuses because SOME backend owns the slot in
  * the program's namespace: `console` (Node's log capture), and
@@ -26,7 +26,7 @@ export type { PtcBindingErrorClass, PtcBindingFunction, PtcBindingNamespace, Ptc
  * unreachable from the program — accepted by validation, unusable on the
  * Python backend, which is exactly the split the shared set exists to prevent.
  */
-export declare const RESERVED_BINDING_GLOBALS: ReadonlySet<string>
+export declare const RESERVED_BINDING_GLOBALS: ReadonlySet<string>;
 /**
  * `PtcBindingErrorClass.memberNameProperty` names EVERY backend refuses, as
  * one shared contract so a request valid on one backend is valid on all. The
@@ -37,12 +37,12 @@ export declare const RESERVED_BINDING_GLOBALS: ReadonlySet<string>
  * raises while constructing the rejection, and the exact set is an interpreter
  * version detail. Any other non-empty own property name is accepted everywhere.
  */
-export declare const RESERVED_ERROR_MEMBERS: ReadonlySet<string>
+export declare const RESERVED_ERROR_MEMBERS: ReadonlySet<string>;
 /**
  * Dunder form (`__x__`, non-empty middle): object-protocol slots in Python,
  * refused as {@link RESERVED_ERROR_MEMBERS | error members} on every backend.
  */
-export declare const DUNDER_MEMBER: RegExp
+export declare const DUNDER_MEMBER: RegExp;
 /**
  * Reserved words of every portable target language (ECMAScript ∪ Python),
  * refused as {@link PtcBindingNamespace.global} / error-class names by all
@@ -53,11 +53,11 @@ export declare const DUNDER_MEMBER: RegExp
  * the Python one. Extending the seam with a new language means widening this
  * union (a breaking review of existing binding names, by design).
  */
-export declare const PORTABLE_RESERVED_WORDS: ReadonlySet<string>
+export declare const PORTABLE_RESERVED_WORDS: ReadonlySet<string>;
 declare module '@deepseek-ai/cordis' {
-  interface Context {
-    ptcRuntime: PtcRuntime
-  }
+    interface Context {
+        ptcRuntime: PtcRuntime;
+    }
 }
 /**
  * Registers one `ctx.ptcRuntime` implementation. Program, budget, abort, and substrate
@@ -67,7 +67,7 @@ declare module '@deepseek-ai/cordis' {
  * terminate and await in-flight runs during disposal.
  */
 export declare abstract class PtcRuntime extends Service {
-  /**
+    /**
      * The source language {@link run} expects `program` to be written in, as a
      * lowercase identifier. Informational, not gating — a consumer that
      * generates language-specific presentation (typed SDK stubs, usage
@@ -76,47 +76,47 @@ export declare abstract class PtcRuntime extends Service {
      * `dsh-tools` presents; the TypeScript backend is released, the Python
      * backend is experimental and private (not published).
      */
-  abstract readonly language: string
-  /**
+    abstract readonly language: string;
+    /**
      * The execution substrate, as a lowercase identifier. Informational, not
      * gating — a descriptor so deployments and diagnostics can tell backends
      * apart, not a security claim. Well-known values: `'worker-thread'`,
      * `'process'`, `'container'`.
      */
-  abstract readonly isolation: string
-  /** Source evaluation form, independent of whether the provider retains state for an owner. */
-  get programFormat(): 'function-body' | 'repl'
-  /**
+    abstract readonly isolation: string;
+    /** Source evaluation form, independent of whether the provider retains state for an owner. */
+    get programFormat(): 'function-body' | 'repl';
+    /**
      * Release an owner's retained environment and await its execution resources.
      * Stateless providers have no retained resources to release.
      * @param owner - The exact object supplied as the request's state owner.
      * @returns Completion after all owned execution resources have been released.
      * @throws When managed resource cleanup fails.
      */
-  release(owner: object): Promise<void>
-  /** Provider-owned program usage guidance for consumers to present alongside the source language. */
-  get executionInstructions(): string
-  /** Deployment file-policy mode, or undefined for a provider without confinement support. */
-  get sandboxMode(): SandboxMode | undefined
-  /** Configured numeric elapsed-time defaults and cap, or undefined when per-call overrides are unsupported. */
-  get timeout(): {
-    defaultMs: number
-    maxMs: number
-  } | undefined
-  constructor(ctx: Context)
-  /**
+    release(owner: object): Promise<void>;
+    /** Provider-owned program usage guidance for consumers to present alongside the source language. */
+    get executionInstructions(): string;
+    /** Deployment file-policy mode, or undefined for a provider without confinement support. */
+    get sandboxMode(): SandboxMode | undefined;
+    /** Configured numeric elapsed-time defaults and cap, or undefined when per-call overrides are unsupported. */
+    get timeout(): {
+        defaultMs: number;
+        maxMs: number;
+    } | undefined;
+    constructor(ctx: Context);
+    /**
      * Resolve supported options and provider defaults before execution.
      * @param request - Program, bindings, cancellation and optional execution choices.
      * @returns Complete directory, deadline and supported authority for run.
      * @throws When an explicit choice is invalid or unsupported by this provider.
      */
-  abstract resolve(request: PtcRunRequest): PtcRunSpec
-  /**
+    abstract resolve(request: PtcRunRequest): PtcRunSpec;
+    /**
      * Execute resolved inputs; program outcomes resolve as result fields.
      * @param spec - directory, deadline, program, bindings, cancellation and supported policy.
      * @returns Captured output and the execution outcome.
      */
-  abstract run(spec: PtcRunSpec): Promise<PtcRunResult>
+    abstract run(spec: PtcRunSpec): Promise<PtcRunResult>;
 }
-export default PtcRuntime
+export default PtcRuntime;
 //# sourceMappingURL=index.d.ts.map

@@ -15,14 +15,14 @@
  *
  * @module dsh-sandbox/escalation
  */
-import type { SandboxMode } from './index.ts'
+import type { SandboxMode } from './index.ts';
 /**
  * The strictly-wider table: what a call whose effective mode is the key may
  * escalate TO. Checked at EXECUTION, never baked into a tool schema — the
  * schema's enum is {@link ESCALATION_TARGETS}, because schemas are
  * registry-global while the effective mode is per-call truth.
  */
-export declare const WIDER_MODES: Record<string, readonly SandboxMode[]>
+export declare const WIDER_MODES: Record<string, readonly SandboxMode[]>;
 /**
  * The closed escalation-target vocabulary — every mode a call could ever
  * escalate TO (`read-only` is the floor; nothing escalates to it). Advertised
@@ -31,7 +31,7 @@ export declare const WIDER_MODES: Record<string, readonly SandboxMode[]>
  * mode sits below it (a `danger-full-access` default would advertise nothing
  * while a narrower-switched session stays confined with no lever).
  */
-export declare const ESCALATION_TARGETS: readonly SandboxMode[]
+export declare const ESCALATION_TARGETS: readonly SandboxMode[];
 /**
  * Validate the escalation argument pairing a tool schema cannot express:
  * `sandbox_permissions` and `justification` travel together — an approval
@@ -40,7 +40,7 @@ export declare const ESCALATION_TARGETS: readonly SandboxMode[]
  * @param sandboxPermissions - the raw `sandbox_permissions` argument, if given.
  * @param justification - the raw `justification` argument, if given.
  */
-export declare function validateEscalationArgs(sandboxPermissions: string | undefined, justification: string | undefined): void
+export declare function validateEscalationArgs(sandboxPermissions: string | undefined, justification: string | undefined): void;
 /**
  * The model-facing denial marker — the one vocabulary both enforcing families
  * teach and report, so the model recognizes a policy denial identically
@@ -49,7 +49,7 @@ export declare function validateEscalationArgs(sandboxPermissions: string | unde
  * @param mode - the mode the denied call ran under.
  * @returns the marker line, exactly as the model sees it.
  */
-export declare function sandboxDenialMarker(mode: SandboxMode): string
+export declare function sandboxDenialMarker(mode: SandboxMode): string;
 /**
  * The same-turn escalation hint that rides a denial when the composition
  * advertises the escalation fields — the nudge lives at the decision point so
@@ -59,7 +59,7 @@ export declare function sandboxDenialMarker(mode: SandboxMode): string
  *   bash, `operation` for a filesystem mutation).
  * @returns the hint line, exactly as the model sees it.
  */
-export declare function escalationHintMarker(subject: string): string
+export declare function escalationHintMarker(subject: string): string;
 /**
  * The model-facing `sandbox_permissions` parameter description, which carries
  * the escalation rules for every enforcing family.
@@ -67,13 +67,13 @@ export declare function escalationHintMarker(subject: string): string
  *   bash, `operation` for a filesystem mutation).
  * @returns the parameter description, exactly as the model sees it.
  */
-export declare function sandboxPermissionsDescription(subject: string): string
+export declare function sandboxPermissionsDescription(subject: string): string;
 /**
  * The closed outcome vocabulary of one escalation ask — structurally identical
  * to the approval seam's `ApprovalOutcome` so an `ApprovalService.request`
  * return is assignable without this package importing it.
  */
-export type EscalationOutcome = 'allowed-once' | 'rejected' | 'cancelled' | 'unavailable'
+export type EscalationOutcome = 'allowed-once' | 'rejected' | 'cancelled' | 'unavailable';
 /**
  * The minimal approval-request shape {@link approveEscalation} needs —
  * structurally the approval seam's `ApprovalService`, generic over the agent
@@ -82,22 +82,22 @@ export type EscalationOutcome = 'allowed-once' | 'rejected' | 'cancelled' | 'una
  * layer infers `A`/`C` as its own `Agent`/`ToolCallId`).
  */
 export interface EscalationApprover<A = object, C = string> {
-  /**
+    /**
      * Ask the human to approve one action, resolving to a closed outcome.
      * @param req - the audit request with optional localized displayReason and presentation lifetime signal.
      * @returns the human's decision as a closed {@link EscalationOutcome}.
      */
-  request(req: {
-    agent: A
-    toolName: string
-    callId: C
-    reason: string
-    displayReason?: {
-      readonly en: string
-      readonly [locale: string]: string
-    }
-    signal?: AbortSignal
-  }): Promise<EscalationOutcome>
+    request(req: {
+        agent: A;
+        toolName: string;
+        callId: C;
+        reason: string;
+        displayReason?: {
+            readonly en: string;
+            readonly [locale: string]: string;
+        };
+        signal?: AbortSignal;
+    }): Promise<EscalationOutcome>;
 }
 /**
  * The approval ingredients an escalating tool hands {@link approveEscalation}:
@@ -107,27 +107,27 @@ export interface EscalationApprover<A = object, C = string> {
  * only judges them.
  */
 export interface EscalationApproval<A = object, C = string> {
-  /** The approval requester (`ctx.approval`), or `undefined` when none is composed. */
-  approver: EscalationApprover<A, C> | undefined
-  /** The calling agent, or `undefined` for an agent-less execution (fails closed). */
-  agent: A | undefined
-  /** The tool-call id the approval prompt attaches to. */
-  callId: C
-  /** The tool name recorded on the approval request. */
-  toolName: string
-  /** The tool-execution abort signal the approval request rides, when present. */
-  signal?: AbortSignal
+    /** The approval requester (`ctx.approval`), or `undefined` when none is composed. */
+    approver: EscalationApprover<A, C> | undefined;
+    /** The calling agent, or `undefined` for an agent-less execution (fails closed). */
+    agent: A | undefined;
+    /** The tool-call id the approval prompt attaches to. */
+    callId: C;
+    /** The tool name recorded on the approval request. */
+    toolName: string;
+    /** The tool-execution abort signal the approval request rides, when present. */
+    signal?: AbortSignal;
 }
 /** One escalation request, as {@link approveEscalation} judges it. */
 export interface EscalationRequest {
-  /** The requested target mode (schema-pinned to {@link ESCALATION_TARGETS} when advertised). */
-  requestedMode: string
-  /** The model's one-sentence reason, shown verbatim to the user inside the audit reason. */
-  justification: string
-  /** The call's effective mode (session override ?? composition default); repeating it needs no approval. */
-  effectiveMode: SandboxMode
-  /** The family's noun for the escalated action in user-facing texts (`command` for bash, `operation` for fs). */
-  subject: string
+    /** The requested target mode (schema-pinned to {@link ESCALATION_TARGETS} when advertised). */
+    requestedMode: string;
+    /** The model's one-sentence reason, shown verbatim to the user inside the audit reason. */
+    justification: string;
+    /** The call's effective mode (session override ?? composition default); repeating it needs no approval. */
+    effectiveMode: SandboxMode;
+    /** The family's noun for the escalated action in user-facing texts (`command` for bash, `operation` for fs). */
+    subject: string;
 }
 /**
  * Resolve a sandbox permission request before execution. Repeating the call's
@@ -139,5 +139,5 @@ export interface EscalationRequest {
  * @param approval - the approval ingredients the tool holds (see {@link EscalationApproval}).
  * @returns the granted mode, consumed by the one call that asked.
  */
-export declare function approveEscalation<A, C>(request: EscalationRequest, approval: EscalationApproval<A, C>): Promise<SandboxMode>
+export declare function approveEscalation<A, C>(request: EscalationRequest, approval: EscalationApproval<A, C>): Promise<SandboxMode>;
 //# sourceMappingURL=escalation.d.ts.map

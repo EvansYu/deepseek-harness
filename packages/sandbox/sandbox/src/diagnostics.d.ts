@@ -1,4 +1,4 @@
-import type { RunnerFailureRule } from './index.ts'
+import type { RunnerFailureRule } from './index.ts';
 /**
  * Attribute only Node ENOENT/EACCES failures whose error path equals argv[0]
  * after independently ruling out the caller-owned cwd. A supplied error path
@@ -13,11 +13,11 @@ import type { RunnerFailureRule } from './index.ts'
  * @param workdir - the caller-owned spawn cwd, checked independently for usability.
  * @returns whether the rejection has executable-specific runner evidence.
  */
-export declare function isRunnerSpawnFailure(error: unknown, runnerProgram: string | undefined, workdir: string): boolean
+export declare function isRunnerSpawnFailure(error: unknown, runnerProgram: string | undefined, workdir: string): boolean;
 /** Fatal runner evidence retained for infrastructure-error detail. */
 interface RunnerFailureMatch {
-  /** The original stderr line that matched a fatal signature. */
-  detail: string
+    /** The original stderr line that matched a fatal signature. */
+    detail: string;
 }
 /**
  * Classify one settled process against the selected backend's structured
@@ -29,7 +29,7 @@ interface RunnerFailureMatch {
  * @param rules - structured runner-failure rules from the active wrap.
  * @returns the first matching fatal line, or undefined when evidence is insufficient.
  */
-export declare function classifyRunnerFailure(exitCode: number | null, stderr: string, rules: readonly RunnerFailureRule[]): RunnerFailureMatch | undefined
+export declare function classifyRunnerFailure(exitCode: number | null, stderr: string, rules: readonly RunnerFailureRule[]): RunnerFailureMatch | undefined;
 /**
  * Match a non-zero exit against case-insensitive stderr signatures.
  * @param exitCode - process exit code; null means signal termination.
@@ -37,6 +37,6 @@ export declare function classifyRunnerFailure(exitCode: number | null, stderr: s
  * @param signatures - substrings identifying the selected backend's dialect.
  * @returns whether this is a non-zero exit whose stderr matches a signature.
  */
-export declare function matchesSignature(exitCode: number | null, stderr: string, signatures: readonly string[]): boolean
-export {}
+export declare function matchesSignature(exitCode: number | null, stderr: string, signatures: readonly string[]): boolean;
+export {};
 //# sourceMappingURL=diagnostics.d.ts.map

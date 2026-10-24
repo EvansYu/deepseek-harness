@@ -7,7 +7,7 @@
 import { Service } from '@deepseek-ai/cordis';
 import { HarnessError } from '@deepseek-ai/dsh-llm';
 export { ESCALATION_TARGETS, WIDER_MODES, approveEscalation, escalationHintMarker, sandboxDenialMarker, sandboxPermissionsDescription, validateEscalationArgs, } from "./escalation.js";
-export { canonicalPath, writableRoots } from "./roots.js";
+export { canonicalPath, workspaceWritableRoots, writableRoots, SandboxInvalidRootError } from "./roots.js";
 /**
  * Error code for a requested confined mode when no backend is usable. The
  * provider fails closed, and `HarnessError` carries the code through
@@ -29,6 +29,13 @@ export class SandboxUnavailableError extends HarnessError {
             + 'danger-full-access.'
             + (detail === undefined ? '' : ` Runner failure: ${detail}`), SANDBOX_UNAVAILABLE);
         this.name = 'SandboxUnavailableError';
+    }
+}
+/** The selected backend is available but cannot enforce the requested policy. */
+export class SandboxUnsupportedPolicyError extends HarnessError {
+    constructor(detail) {
+        super(detail, 'SANDBOX_UNSUPPORTED_POLICY');
+        this.name = 'SandboxUnsupportedPolicyError';
     }
 }
 /**

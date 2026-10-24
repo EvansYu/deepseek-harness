@@ -5,7 +5,7 @@
  *
  * @module @deepseek-ai/dsh-ptc-runtime/src/types
  */
-import type { SandboxEnforcement, SandboxExecutionPolicy, SandboxMode } from '@deepseek-ai/dsh-sandbox'
+import type { SandboxEnforcement, SandboxExecutionPolicy, SandboxMode } from '@deepseek-ai/dsh-sandbox';
 /**
  * One host-side function exposed to the program as an async callable. The
  * runtime bridges calls to it (possibly across a serialization boundary), so
@@ -15,11 +15,11 @@ import type { SandboxEnforcement, SandboxExecutionPolicy, SandboxMode } from '@d
  * of this function surfaces inside the program as a rejection of the
  * corresponding call.
  */
-export type PtcBindingFunction = (args: unknown) => Promise<PtcJsonValue>
+export type PtcBindingFunction = (args: unknown) => Promise<PtcJsonValue>;
 /** A lossless JSON value transferable through the dependency-light Service Definition. */
 export type PtcJsonValue = null | boolean | number | string | PtcJsonValue[] | {
-  [key: string]: PtcJsonValue
-}
+    [key: string]: PtcJsonValue;
+};
 /**
  * Program-visible typed rejection for one binding namespace. The runtime
  * injects a real error constructor under `name`; rejected member calls become
@@ -28,15 +28,15 @@ export type PtcJsonValue = null | boolean | number | string | PtcJsonValue[] | {
  * of a particular consumer such as PTC mode.
  */
 export interface PtcBindingErrorClass {
-  /** Constructor global and resulting `Error.name`; same portable identifier rule as {@link PtcBindingNamespace.global}. */
-  name: string
-  /**
+    /** Constructor global and resulting `Error.name`; same portable identifier rule as {@link PtcBindingNamespace.global}. */
+    name: string;
+    /**
      * Non-empty own property for the member name. The portable exclusion set is
      * `RESERVED_ERROR_MEMBERS` plus dunder-form names (`__x__`, non-empty
      * middle), enforced identically by every backend; any other name —
      * identifiers or not — is accepted everywhere.
      */
-  memberNameProperty: string
+    memberNameProperty: string;
 }
 /**
  * A named group of {@link PtcBindingFunction}s the runtime exposes to the
@@ -46,7 +46,7 @@ export interface PtcBindingErrorClass {
  * collisions.
  */
 export interface PtcBindingNamespace {
-  /**
+    /**
      * The global identifier the program sees. Must match the LANGUAGE-PORTABLE
      * identifier subset `[A-Za-z_][A-Za-z0-9_]*` and no language's reserved
      * words, so the same namespace list works against every backend regardless
@@ -56,64 +56,64 @@ export interface PtcBindingNamespace {
      * `__dsh_main__`) are also refused everywhere; see its declaration for the
      * exact set and why each entry is reserved.
      */
-  global: string
-  /** The callable members, keyed by the exact name the program calls. */
-  functions: Record<string, PtcBindingFunction>
-  /** Optional program-visible typed rejection contract for this namespace. */
-  errorClass?: PtcBindingErrorClass
+    global: string;
+    /** The callable members, keyed by the exact name the program calls. */
+    functions: Record<string, PtcBindingFunction>;
+    /** Optional program-visible typed rejection contract for this namespace. */
+    errorClass?: PtcBindingErrorClass;
 }
 /**
  * Caller inputs for one program. The provider's resolve method validates supported
  * options and supplies directory, deadline, and authority before execution.
  */
 export interface PtcRunRequest {
-  /**
+    /**
      * The program source, in the runtime's {@link ../index.ts | language}. It
      * follows the provider's programFormat: an async function body supports
      * top-level `await` and `return`; a REPL supports top-level declarations,
      * `await`, and a final expression. The completion value becomes
      * {@link PtcRunResult.value}.
      */
-  program: string
-  /**
+    program: string;
+    /**
      * Object-identity owner for optional in-memory state. Omission requests a fresh
      * environment. Consumers must await runtime.release(owner) when the owner ends.
      * Stateless providers ignore this field; retained state is never durable.
      */
-  stateOwner?: object
-  /** Host functions exposed to the program, one global object per namespace. */
-  bindings: PtcBindingNamespace[]
-  /** Working directory in the mounted filesystem and subprocess execution world. */
-  cwd?: string
-  /**
+    stateOwner?: object;
+    /** Host functions exposed to the program, one global object per namespace. */
+    bindings: PtcBindingNamespace[];
+    /** Working directory in the mounted filesystem and subprocess execution world. */
+    cwd?: string;
+    /**
      * Elapsed execution budget in milliseconds. Omission uses provider defaults;
      * null requests no deadline. Providers validate and cap numeric budgets or reject unsupported choices.
      */
-  timeoutMs?: number | null
-  /** Resolved authority for this execution. Providers without confinement reject an explicit policy. */
-  sandboxPolicy?: SandboxExecutionPolicy
-  /**
+    timeoutMs?: number | null;
+    /** Resolved authority for this execution. Providers without confinement reject an explicit policy. */
+    sandboxPolicy?: SandboxExecutionPolicy;
+    /**
      * Abort the run: the runtime stops the program (hard, even mid-loop) and
      * resolves with a {@link PtcRunFailure} of kind `'abort'`. In-flight
      * binding calls are the CALLER's to settle — the runtime only stops asking.
      */
-  signal?: AbortSignal
+    signal?: AbortSignal;
 }
 /** Fully resolved execution inputs; run never supplies a missing directory or deadline choice. */
 export interface PtcRunSpec extends PtcRunRequest {
-  /** Absolute directory in the provider's execution world. */
-  cwd: string
-  /** Positive finite elapsed budget in milliseconds after provider capping, or null for no deadline. */
-  timeoutMs: number | null
+    /** Absolute directory in the provider's execution world. */
+    cwd: string;
+    /** Positive finite elapsed budget in milliseconds after provider capping, or null for no deadline. */
+    timeoutMs: number | null;
 }
 /** File confinement applied to a program, independently of its terminal outcome. */
 export interface PtcRunSandbox {
-  /** File-effect mode used for this execution. */
-  mode: SandboxMode
-  /** Program failure text matched backend diagnostics; not enforcement proof or an exhaustive denial record. */
-  denied: boolean
-  /** Completeness reported by the selected confining backend; absent for full access. */
-  enforcement?: SandboxEnforcement
+    /** File-effect mode used for this execution. */
+    mode: SandboxMode;
+    /** Program failure text matched backend diagnostics; not enforcement proof or an exhaustive denial record. */
+    denied: boolean;
+    /** Completeness reported by the selected confining backend; absent for full access. */
+    enforcement?: SandboxEnforcement;
 }
 /**
  * Why a run failed. The kinds are orthogonal outcomes reported independently
@@ -130,10 +130,10 @@ export interface PtcRunSandbox {
  * - `'sandbox-unavailable'` — required confinement could not be established.
  */
 export interface PtcRunFailure {
-  /** The failure class (see the interface doc for each kind's meaning). */
-  kind: 'exception' | 'timeout' | 'abort' | 'worker-exit' | 'invalid-output' | 'output-limit' | 'protocol' | 'sandbox-unavailable'
-  /** Human-readable detail, suitable for feeding back to a model to self-correct. */
-  message: string
+    /** The failure class (see the interface doc for each kind's meaning). */
+    kind: 'exception' | 'timeout' | 'abort' | 'worker-exit' | 'invalid-output' | 'output-limit' | 'protocol' | 'sandbox-unavailable';
+    /** Human-readable detail, suitable for feeding back to a model to self-correct. */
+    message: string;
 }
 /**
  * The outcome of one run. An error is a FIELD on a resolved result, never a
@@ -141,22 +141,22 @@ export interface PtcRunFailure {
  * an exception path.
  */
 export interface PtcRunResult {
-  /** Applied file policy and observed denial, when the provider enforces file policy. */
-  sandbox?: PtcRunSandbox
-  /**
+    /** Applied file policy and observed denial, when the provider enforces file policy. */
+    sandbox?: PtcRunSandbox;
+    /**
      * The program's completion value (a return or final REPL expression), when it ran to
      * completion and the value crossed the runtime's lossless-JSON boundary.
      * Invalid or over-limit completions fail the run instead of substituting a
      * rendered string; a failed or value-less run leaves this absent.
      */
-  value?: PtcJsonValue
-  /**
+    value?: PtcJsonValue;
+    /**
      * Captured text. Each source channel preserves emission order; interleaving
      * across independent channels is backend-dependent. Bounded only as part of
      * the outer result.
      */
-  logs: string[]
-  /** Present iff the run failed; see {@link PtcRunFailure} for the taxonomy. */
-  error?: PtcRunFailure
+    logs: string[];
+    /** Present iff the run failed; see {@link PtcRunFailure} for the taxonomy. */
+    error?: PtcRunFailure;
 }
 //# sourceMappingURL=types.d.ts.map
