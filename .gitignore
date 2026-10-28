@@ -49,3 +49,4 @@ worktrees/
 native/system/test/bin/
 .codegraph/
 wiki/
+tmp/
