@@ -50,3 +50,6 @@ native/system/test/bin/
 .codegraph/
 wiki/
 tmp/
+
+# Generated company-signed CUA release record.
+/packages/experimental/cua-macos/cua-helper.json
