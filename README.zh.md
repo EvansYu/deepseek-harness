@@ -75,7 +75,14 @@ pnpm dsh web
 
 `pnpm run dev:web` 会在一个终端里完成构建、启动，并在源码修改时重建 client bundle；`make help` 列出 Web 与 Desktop 对应的 Make target。完整表格见开发指南的「应用命令」一节。
 
-面向 agent：请遵循 [AGENTS.md](AGENTS.md)。
+Agent 协作说明见 [AGENTS.md](AGENTS.md) 和 [GLOBAL_AGENTS.md](GLOBAL_AGENTS.md)。
+
+```mermaid
+flowchart LR
+    CLI["dsh CLI"] --> PROFILE["Selected Cordis profile"]
+    PROFILE --> BUNDLES["Ordered bundles and profile patches"]
+    BUNDLES --> RUNTIME["Cordis plugin tree"]
+```
 
 ## 引用
 

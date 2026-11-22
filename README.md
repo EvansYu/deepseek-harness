@@ -56,7 +56,14 @@ Start with the [development guide](docs/development.md) and [architecture docume
 
 `pnpm run dev:web` builds, serves, and rebuilds client bundles on source edits in one terminal, and `make help` lists the matching Make targets for Web and Desktop; the guide's application commands section owns the full table.
 
-For agents, follow [AGENTS.md](AGENTS.md).
+For agent workflows, see [AGENTS.md](AGENTS.md) and [GLOBAL_AGENTS.md](GLOBAL_AGENTS.md).
+
+```mermaid
+flowchart LR
+    CLI["dsh CLI"] --> PROFILE["Selected Cordis profile"]
+    PROFILE --> BUNDLES["Ordered bundles and profile patches"]
+    BUNDLES --> RUNTIME["Cordis plugin tree"]
+```
 
 ## Citation
 
